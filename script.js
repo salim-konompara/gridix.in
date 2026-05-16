@@ -57,16 +57,18 @@ window.addEventListener('scroll', () => {
 
 // Form submission (prevent default for demo)
 const form = document.querySelector('.contact-form');
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = 'Sent! <i class="fas fa-check"></i>';
-    btn.style.background = 'var(--primary-green)';
-    btn.style.color = '#000';
-    
-    setTimeout(() => {
-        btn.innerHTML = originalText;
-        form.reset();
-    }, 3000);
-});
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Sent! <i class="fas fa-check"></i>';
+        btn.style.background = 'var(--primary-green)';
+        btn.style.color = '#000';
+        
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            form.reset();
+        }, 3000);
+    });
+}

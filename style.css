@@ -31,9 +31,22 @@ body {
 }
 
 /* Typography */
+@font-face {
+    font-family: 'PixelArmy';
+    src: url('font/PixelArmy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1, h2, h3, h4 {
     font-weight: 800;
     letter-spacing: -0.5px;
+}
+
+h1, h2 {
+    font-family: 'PixelArmy', 'Outfit', sans-serif;
+    font-weight: normal;
+    letter-spacing: 1px;
 }
 
 /* Navbar */
@@ -877,4 +890,219 @@ footer {
 
 .gallery-item:hover h3 {
     transform: translateY(0);
+}
+
+/* WhatsApp CTA */
+.whatsapp-cta {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 230, 118, 0.1);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-cta:hover {
+    border-color: #25D366;
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.2);
+}
+
+.wa-header {
+    background: rgba(37, 211, 102, 0.1);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(37, 211, 102, 0.2);
+    position: relative;
+}
+
+.wa-icon {
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+.wa-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-main);
+}
+
+.wa-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.wa-status {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #25D366;
+    font-weight: 600;
+}
+
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background: #25D366;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.wa-body {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chat-bubble {
+    background: rgba(37, 211, 102, 0.1);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+    padding: 1.5rem;
+    border-radius: 0 20px 20px 20px;
+    max-width: 90%;
+    position: relative;
+    animation: slideUp 0.5s ease forwards;
+}
+
+.chat-bubble p {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.chat-bubble .time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+    text-align: right;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wa-footer {
+    padding: 2rem;
+    background: rgba(37, 211, 102, 0.05);
+    text-align: center;
+    border-top: 1px solid rgba(37, 211, 102, 0.1);
+}
+
+.wa-btn {
+    background: #25D366;
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.wa-btn:hover {
+    background: #128C7E;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    border: none;
+}
+
+/* --- New Pages Responsive Styles --- */
+@media (max-width: 768px) {
+    .page-main {
+        padding-top: 80px;
+    }
+    .page-header {
+        padding: 3rem 5% 1rem;
+    }
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    .gallery-category h2 {
+        font-size: 1.5rem;
+    }
+    .contact-container {
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .contact-info h2 {
+        font-size: 2rem;
+    }
+    .wa-header {
+        padding: 1.5rem;
+    }
+    .wa-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 2rem;
+    }
+    .wa-info h3 {
+        font-size: 1.2rem;
+    }
+    .wa-status {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+    .wa-body {
+        padding: 1.5rem;
+    }
+    .chat-bubble {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    .chat-bubble p {
+        font-size: 1rem;
+    }
+    .wa-footer {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    .wa-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .wa-status {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: -0.5rem;
+    }
 }
