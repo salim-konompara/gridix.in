@@ -24,27 +24,24 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Active nav link on scroll
+// Active nav link based on current page or scroll
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-links a');
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navItems.forEach(item => {
+// Set active based on URL
+const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+navItems.forEach(item => {
+    const href = item.getAttribute('href');
+    if (href === currentPath) {
+        item.classList.add('active');
+    } else if (currentPath === '' && href === 'index.html') {
+        item.classList.add('active');
+    } else {
         item.classList.remove('active');
-        if (item.getAttribute('href').slice(1) === current) {
-            item.classList.add('active');
-        }
-    });
+    }
 });
+
+// We can still keep scroll logic for sections if needed, but for multi-page it's better to just highlight based on URL.
 
 // Navbar background effect on scroll
 const header = document.querySelector('header');
