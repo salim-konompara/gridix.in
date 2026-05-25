@@ -72,3 +72,45 @@ if (form) {
         }, 3000);
     });
 }
+
+// Typewriter Heading Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const typewriters = document.querySelectorAll('.typewriter');
+    typewriters.forEach(el => {
+        const text = el.textContent.trim();
+        el.textContent = '';
+        
+        // Create typewriter text container
+        const textSpan = document.createElement('span');
+        textSpan.className = 'typewriter-text';
+        
+        // Create blinking cursor element
+        const cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        cursor.textContent = '_';
+        
+        el.appendChild(textSpan);
+        el.appendChild(cursor);
+        
+        let i = 0;
+        const typingSpeed = 100; // milliseconds per character
+        
+        function typeChar() {
+            if (i < text.length) {
+                textSpan.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeChar, typingSpeed);
+            } else {
+                // Fade out and remove blinking cursor after typing completes
+                setTimeout(() => {
+                    cursor.style.transition = 'opacity 0.6s ease';
+                    cursor.style.opacity = '0';
+                    setTimeout(() => cursor.remove(), 600);
+                }, 800);
+            }
+        }
+        
+        // Introduce a small entry delay for premium feel
+        setTimeout(typeChar, 400);
+    });
+});
