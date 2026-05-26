@@ -117,48 +117,79 @@ header {
 .logo a {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
     color: var(--text-main);
 }
 
-.logo-box {
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: 2px solid var(--text-main);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    transition: all 0.3s ease;
+/* Header Logo Image */
+.header-logo-img {
+    width: 64px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: drop-shadow(0 0 0px rgba(0, 230, 118, 0));
 }
 
-.logo-box .g-letter {
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: var(--text-main);
-}
-
-.logo-dot {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 6px;
-    height: 6px;
-    background: var(--primary-green);
-    border-radius: 50%;
+.logo:hover .header-logo-img {
+    filter: drop-shadow(0 0 16px rgba(0, 230, 118, 0.5));
+    transform: scale(1.08);
 }
 
 .logo-text {
     font-weight: 800;
     font-size: 1.5rem;
     letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
-.logo:hover .logo-box {
-    border-color: var(--primary-green);
-    box-shadow: 0 0 15px rgba(0, 230, 118, 0.3);
+.logo:hover .logo-text {
+    color: var(--primary-green);
+}
+
+/* Footer Logo Styles */
+.footer-logo-link {
+    display: inline-block;
+    transition: transform 0.4s ease;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-logo-link:hover {
+    transform: scale(1.05);
+}
+
+.footer-logo-img {
+    width: 180px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    filter: none;
+    transition: transform 0.4s ease;
+}
+
+.footer-logo-link:hover .footer-logo-img {
+    transform: scale(1.02);
+}
+
+.footer-tagline {
+    font-family: 'PixelArmy', 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    color: var(--primary-green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0.8rem 0 0.5rem;
+}
+
+.footer-brand-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-green), transparent);
+    margin: 1rem 0;
+    border-radius: 2px;
 }
 
 .hamburger {
@@ -330,20 +361,26 @@ section {
 /* Services */
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .service-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     padding: 3rem 2rem;
-    border-radius: 12px;
+    border-radius: 16px;
     text-align: center;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     backdrop-filter: blur(5px);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 380px;
 }
 
 .service-card::before {
@@ -353,34 +390,76 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(0, 230, 118, 0.1), transparent);
-    transform: translateX(-100%);
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.15), rgba(0, 230, 118, 0.05));
+    transform: translateX(-100%) translateY(-100%);
     transition: transform 0.6s ease;
+    z-index: -1;
 }
 
 .service-card:hover::before {
-    transform: translateX(100%);
+    transform: translateX(0) translateY(0);
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px) scale(1.02);
     border-color: var(--primary-green);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 230, 118, 0.2);
 }
 
-.service-card i {
-    font-size: 3rem;
+.service-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.2), rgba(0, 230, 118, 0.05));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+    border: 2px solid var(--primary-green);
+    position: relative;
+    z-index: 1;
+}
+
+.service-card:hover .service-icon {
+    transform: rotate(10deg) scale(1.15);
+    background: linear-gradient(135deg, rgba(0, 230, 118, 0.4), rgba(0, 230, 118, 0.2));
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0.4);
+}
+
+.service-icon i {
+    font-size: 2.5rem;
     color: var(--primary-green);
-    margin-bottom: 1.5rem;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-icon i {
+    transform: scale(1.1);
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-main);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover h3 {
+    color: var(--primary-green);
 }
 
 .service-card p {
     color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    flex-grow: 1;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover p {
+    color: var(--text-main);
 }
 
 /* Projects */
